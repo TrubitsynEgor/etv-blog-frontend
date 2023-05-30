@@ -5,7 +5,7 @@ export const CreatePost = () => {
   return (
     <div>
       <Link
-        href={'/add-post'}
+        href={'/posts/create'}
         className="flex items-center gap-x-2 hover:opacity-75 transition-opacity"
       >
         <span className="font-medium">Create post</span>
