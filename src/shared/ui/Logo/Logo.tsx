@@ -9,8 +9,8 @@ export const Logo = () => {
         href="/"
         className="flex items-center gap-x-3 hover:opacity-75 transition-opacity"
       >
-        <Image src={logoSVG} alt="logoSVG" width={35} height={35} />
-        <span className="text-4xl font-medium text-slate-300">ETV-blog</span>
+        <Image src={logoSVG} alt="logoSVG" width={25} height={25} />
+        <span className="text-3xl font-medium  ">ETV-blog</span>
       </Link>
     </div>
   )

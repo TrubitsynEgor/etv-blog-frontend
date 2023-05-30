@@ -1,4 +1,4 @@
-import { DetailsDivProps } from '@/types'
+import { DetailsDivProps } from '@/shared/types'
 
 export const Container = ({ children, className }: DetailsDivProps) => {
   return (

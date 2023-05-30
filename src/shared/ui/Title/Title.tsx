@@ -1,16 +1,18 @@
-import { DetailsHeadingProps } from '@/types';
-import styles from './Title.module.scss';
+import { DetailsHeadingProps } from '@/shared/types'
+import styles from './Title.module.scss'
 import cn from 'classnames'
-import { FC } from 'react';
+import { FC } from 'react'
 
 interface TitleProps extends DetailsHeadingProps {
   tag?: 'h1' | 'h2' | 'h3'
 }
 
-export const Title: FC<TitleProps> = ({ children, tag, className, ...props }) => {
-
-
-
+export const Title: FC<TitleProps> = ({
+  children,
+  tag,
+  className,
+  ...props
+}) => {
   if (tag === 'h2') {
     return (
       <h2 className={cn(styles.h2, className, styles.title)} {...props}>
@@ -32,4 +34,4 @@ export const Title: FC<TitleProps> = ({ children, tag, className, ...props }) =>
       {children}
     </h1>
   )
-};
+}
