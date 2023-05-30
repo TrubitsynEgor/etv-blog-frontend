@@ -1,3 +1,5 @@
 export * from './Logo/Logo'
 export * from './Container/Container'
 export * from './Nav/Nav'
+export * from './CreatePost'
+export * from './UserPanel'
