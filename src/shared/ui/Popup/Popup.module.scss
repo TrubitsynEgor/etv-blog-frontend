@@ -1,0 +1,56 @@
+.popup {
+	background-color: rgba(#000000, .6);
+	position: fixed;
+	z-index: 101;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all .3s ease-in-out;
+	opacity: 0;
+	pointer-events: none;
+
+	&.visible {
+		opacity: 1;
+		pointer-events: all;
+	}
+
+}
+
+
+.content {
+	position: relative;
+
+	padding: 42px;
+	background-color: var(--light);
+	box-shadow: 2px 3px 3px rgba(#fff, 0.5);
+	border-radius: 13px;
+	max-width: 100%;
+	transition: all .3s ease-in-out;
+	transform: scale(0.5);
+
+	&.visible {
+		transform: scale(1);
+	}
+
+
+
+}
+
+.close {
+	position: absolute;
+	background: none;
+	border: none;
+	top: -40px;
+	right: 0;
+	cursor: pointer;
+	color: var(--light);
+
+	& svg {
+		width: 40px;
+		height: 40px;
+	}
+}

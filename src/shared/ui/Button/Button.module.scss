@@ -1,0 +1,63 @@
+.button {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	cursor: pointer;
+	text-align: center;
+	border: none;
+	border-radius: 5px;
+	font-size: 20px;
+	transition: all .3s ease-in-out;
+	font-family: var(--comicNeue);
+	text-shadow: 1px 1px 3px var(--dark);
+
+	&:disabled {
+		opacity: .4;
+		cursor: not-allowed;
+	}
+
+	& svg {
+		margin-top: 6px;
+	}
+
+	&.primary {
+		color: var(--light);
+		background-color: var(--primary);
+
+		& svg {
+			fill: var(--light);
+
+		}
+
+		&:hover {
+			background-color: var(--primary-hover);
+		}
+	}
+
+	&.ghost {
+		color: var(--light);
+		background-color: transparent;
+		border: 1px solid gray;
+
+		&:hover {
+			background-color: var(--primary);
+			color: var(--light);
+
+			& svg {
+				fill: var(--light);
+			}
+		}
+	}
+
+	& .arrow {
+		margin-left: 10px;
+
+		&.down {
+			transform: rotate(90deg);
+			transition: all .3s ease-in-out;
+
+		}
+	}
+
+
+}
