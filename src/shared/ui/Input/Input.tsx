@@ -5,13 +5,13 @@ import { forwardRef } from 'react'
 import { FieldError } from 'react-hook-form'
 
 interface InputProps extends DetailsInputProps {
-  error?: FieldError
+  error?: boolean
 }
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ error, children, id, title, name = '', className, ...props }, ref) => {
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ error, children, id, title, name, className, ...props }, ref) => {
     return (
-      <div className={styles.wrapper}>
+      <div className={cn(styles.wrapper, className)}>
         <label htmlFor={id} className={cn(styles.label, className)}>
           {title}
         </label>
@@ -27,3 +27,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     )
   }
 )
+
+Input.displayName = 'Input'
+export { Input }

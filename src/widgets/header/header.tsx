@@ -1,12 +1,21 @@
 'use client'
 import { Container, CreatePost, Logo, UserPanel } from '@/shared'
-import { Nav } from '@/shared/ui/Nav/Nav'
+import { Nav } from '@/shared/ui/Nav'
 import { menuItems } from './consts'
-import { FC } from 'react'
 import { usePathname } from 'next/navigation'
+import { useAppDispatch } from '@/store/hooks'
+import { isAuthSelector, logout } from '@/features'
+import { useSelector } from 'react-redux'
 
 export const Header = () => {
   const pathname = usePathname()
+  const isAuth = useSelector(isAuthSelector)
+  const dispatch = useAppDispatch()
+
+  const viewerLogout = () => {
+    dispatch(logout())
+    localStorage.removeItem('token')
+  }
   return (
     <header className="py-3 bg-orange-200">
       <Container className="flex items-center justify-between gap-x-10">
@@ -14,7 +23,7 @@ export const Header = () => {
         <Nav menuItems={menuItems} pathname={pathname} />
         <div className="flex gap-x-10">
           <CreatePost />
-          <UserPanel />
+          <UserPanel logout={viewerLogout} isAuth={isAuth} />
         </div>
       </Container>
     </header>

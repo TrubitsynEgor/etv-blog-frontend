@@ -3,7 +3,6 @@ import { ReduxProvider } from '../store/provider'
 import './globals.css'
 import { Inter } from 'next/font/google'
 import { Header } from '@/widgets'
-import { Container } from '@/shared'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,12 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ReduxProvider>
-          <Header />
-          <main>
-            <Container>{children}</Container>
-          </main>
-        </ReduxProvider>
+        <ReduxProvider>{children}</ReduxProvider>
       </body>
     </html>
   )

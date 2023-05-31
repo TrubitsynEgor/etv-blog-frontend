@@ -3,7 +3,7 @@ import { MdOutlinePostAdd } from 'react-icons/md'
 
 export const CreatePost = () => {
   return (
-    <div>
+    <div className="flex ">
       <Link
         href={'/posts/create'}
         className="flex items-center gap-x-2 hover:opacity-75 transition-opacity"

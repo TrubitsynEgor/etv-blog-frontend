@@ -1,6 +1,6 @@
 'use client'
+import { authReducer } from '@/features'
 import { configureStore } from '@reduxjs/toolkit'
-import { authReducer } from '@/entities'
 
 export const store = configureStore({
   reducer: {
