@@ -11,10 +11,13 @@ export const fetchAuth = createAsyncThunk(
   }
 )
 
-export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe', async () => {
-  const { data } = await instanceAxios.get('/auth/me')
-  return data
-})
+export const fetchAuthViewerCheck = createAsyncThunk(
+  'auth/fetchAuthViewerCheck',
+  async () => {
+    const { data } = await instanceAxios.get('/auth/me')
+    return data
+  }
+)
 export const fetchRegister = createAsyncThunk(
   'auth/fetchRegister',
   async (params) => {
@@ -48,6 +51,14 @@ const authSlice = createSlice({
         state.data = actions.payload
       })
       .addCase(fetchAuth.rejected, (state) => {
+        state.status = 'error'
+        state.data = null
+      })
+      .addCase(fetchAuthViewerCheck.fulfilled, (state, actions) => {
+        state.status = 'success'
+        state.data = actions.payload
+      })
+      .addCase(fetchAuthViewerCheck.rejected, (state) => {
         state.status = 'error'
         state.data = null
       })

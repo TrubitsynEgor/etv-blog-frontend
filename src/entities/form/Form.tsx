@@ -1,11 +1,11 @@
 'use client'
 import { Button, Input } from '@/shared'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FaEye } from 'react-icons/fa'
 import { FaEyeSlash } from 'react-icons/fa'
 import { FormData, useValidations } from './useValidations'
 import { useAppDispatch } from '@/store/hooks'
-import { fetchAuth, writeTokenOnSubmit } from '@/features'
+import { fetchAuth, fetchAuthViewerCheck, writeTokenOnSubmit } from '@/features'
 import { useRouter } from 'next/navigation'
 
 export const Form = () => {
