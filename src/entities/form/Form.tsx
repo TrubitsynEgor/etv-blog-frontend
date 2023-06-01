@@ -1,24 +1,36 @@
 'use client'
 import { Button, Input } from '@/shared'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FaEye } from 'react-icons/fa'
 import { FaEyeSlash } from 'react-icons/fa'
-import { FormData, useValidations } from './useValidations'
-import { useAppDispatch } from '@/store/hooks'
-import { fetchAuth, fetchAuthViewerCheck, writeTokenOnSubmit } from '@/features'
-import { useRouter } from 'next/navigation'
 
-export const Form = () => {
+import {
+  FieldErrors,
+  UseFormHandleSubmit,
+  UseFormRegister,
+} from 'react-hook-form'
+import { FormData, RegisterFormData } from '@/features'
+
+type FormDataAlias = FormData | RegisterFormData
+
+interface FormProps {
+  onSubmit: (data: any) => Promise<void> // must be FormDataAlias alias
+  //! Property 'fullName' does not exist on type (But it's there! need advice)
+  handleSubmit: UseFormHandleSubmit<FormDataAlias>
+  register: UseFormRegister<FormDataAlias>
+  errors: any //! same thing ^
+  //FieldErrors<FormDataAlias> type here work for all field Except fullName!
+  isRegister?: boolean
+}
+
+export const Form = ({
+  onSubmit,
+  handleSubmit,
+  register,
+  errors,
+  isRegister,
+}: FormProps) => {
   const [passwordIsVisible, setPasswordIsVisible] = useState(false)
-  const { handleSubmit, errors, register } = useValidations()
-  const dispatch = useAppDispatch()
-  const router = useRouter()
-
-  const onSubmit = async (data: FormData) => {
-    const viewerData = await dispatch(fetchAuth(data))
-    writeTokenOnSubmit(viewerData)
-    router.push('/')
-  }
 
   return (
     <form
@@ -51,6 +63,17 @@ export const Form = () => {
           {!passwordIsVisible ? <FaEye /> : <FaEyeSlash />}
         </Button>
       </Input>
+
+      {isRegister && (
+        <Input
+          {...register('fullName')}
+          type="text"
+          placeholder="Enter your full name"
+          error={!!errors.fullName}
+        >
+          {<span className="text-red-600">{errors.fullName?.message}</span>}
+        </Input>
+      )}
 
       <Button appearance="primary">Submit</Button>
     </form>

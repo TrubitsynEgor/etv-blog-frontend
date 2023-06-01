@@ -1,7 +1,7 @@
-import { FormData } from '@/entities'
 import { IViewer, instanceAxios } from '@/shared'
 import { RootState } from '@/store/store'
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { FormData, RegisterFormData } from './hooks/useValidations'
 
 export const fetchAuth = createAsyncThunk(
   'auth/fetchAuth',
@@ -20,7 +20,7 @@ export const fetchAuthViewerCheck = createAsyncThunk(
 )
 export const fetchRegister = createAsyncThunk(
   'auth/fetchRegister',
-  async (params) => {
+  async (params: RegisterFormData) => {
     const { data } = await instanceAxios.post('/auth/register', params)
     return data
   }
@@ -59,6 +59,14 @@ const authSlice = createSlice({
         state.data = actions.payload
       })
       .addCase(fetchAuthViewerCheck.rejected, (state) => {
+        state.status = 'error'
+        state.data = null
+      })
+      .addCase(fetchRegister.fulfilled, (state, actions) => {
+        state.status = 'success'
+        state.data = actions.payload
+      })
+      .addCase(fetchRegister.rejected, (state) => {
         state.status = 'error'
         state.data = null
       })

@@ -1,3 +1,6 @@
 export * from './reduxSlice'
 export * from './hooks/useAuth'
+export * from './hooks/useLogin'
+export * from './hooks/useRegister'
+export * from './hooks/useValidations'
 export * from './model'

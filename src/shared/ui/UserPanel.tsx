@@ -5,9 +5,10 @@ import { Button } from './Button'
 interface UserPanelProps {
   isAuth: boolean
   logout: () => void
+  name: string
 }
 
-export const UserPanel = ({ isAuth, logout }: UserPanelProps) => {
+export const UserPanel = ({ isAuth, logout, name }: UserPanelProps) => {
   return (
     <div className="flex gap-x-3">
       {isAuth ? (
@@ -16,7 +17,7 @@ export const UserPanel = ({ isAuth, logout }: UserPanelProps) => {
             href={'/profile'}
             className="flex items-center gap-x-2 hover:opacity-75 transition-opacity"
           >
-            <span className="font-medium">Profile</span>
+            <span className="font-medium">{name}</span>
             <RiUser2Fill className="fill-red-500 w-7 h-8" />
           </Link>
 
