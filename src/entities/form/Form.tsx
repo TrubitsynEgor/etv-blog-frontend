@@ -53,6 +53,7 @@ export const Form = ({
       >
         {<span className="text-red-600">{errors.password?.message}</span>}
         <Button
+          type="button"
           onClick={() => setPasswordIsVisible((prev) => !prev)}
           appearance="icon"
           aria-label={`Show password ${

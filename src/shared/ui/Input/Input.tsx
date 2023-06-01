@@ -19,7 +19,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           ref={ref}
           name={name}
           id={id}
-          className={cn(styles.input, className, { [styles.error]: error })}
+          className={cn(styles.input, className, {
+            [styles.error]: error,
+          })}
           {...props}
         />
         {children}

@@ -19,7 +19,7 @@
 	font-size: 18px;
 
 	&:focus {
-		outline: 3px solid var(--active);
+		outline: 3px solid #f97316;
 	}
 
 	&::placeholder {
@@ -37,7 +37,7 @@
 		box-shadow: inset 2px 2px 8px rgba(tomato, 0.3), inset -3px -2px 5px rgba(255, 255, 255, 0.8);
 
 		&:focus {
-			outline: 3px solid tomato;
+			outline: 3px solid red;
 		}
 	}
 }

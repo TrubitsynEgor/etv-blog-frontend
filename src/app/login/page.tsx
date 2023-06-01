@@ -4,7 +4,7 @@ import { LoginForm } from '@/widgets'
 export default function LoginPage() {
   return (
     <Container>
-      <Title className="mt-5">Login page</Title>
+      <Title className="text-center">Login</Title>
       <LoginForm />
     </Container>
   )

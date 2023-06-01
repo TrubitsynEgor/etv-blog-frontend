@@ -24,9 +24,9 @@ export const Button: FC<ButtonProps> = ({
   return (
     <button
       className={cn(
-        ' font-semibold  flex items-center p-2.5 cursor-pointer justify-center transition-colors duration-300 ease-in-out border-none rounded-md text-lg disabled:opacity-40 disabled:cursor-not-allowed',
+        ' font-semibold  flex items-center p-2.5 cursor-pointer justify-center transition-colors duration-300 ease-in-out border-none rounded-md text-lg disabled:opacity-40 disabled:cursor-not-allowed focus:outline-2 focus:outline-orange-400',
         className,
-        '',
+
         {
           [primary]: appearance === 'primary',
           [ghost]: appearance === 'ghost',

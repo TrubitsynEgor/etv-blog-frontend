@@ -2,22 +2,25 @@
 import { Container, CreatePost, Logo, UserPanel } from '@/shared'
 import { Nav } from '@/shared/ui/Nav'
 import { menuItems } from './consts'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { fetchAuthViewerCheck, isAuthSelector, logout } from '@/features'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import { RootState } from '@/store/store'
 
 export const Header = () => {
   const pathname = usePathname()
+  const router = useRouter()
   const isAuth = useSelector(isAuthSelector)
-  const data = useAppSelector((state) => state.auth.data)
+  const data = useSelector((state: RootState) => state.auth.data)
   const name = data?.fullName.split(' ')[0]
   const dispatch = useAppDispatch()
 
   const viewerLogout = () => {
     dispatch(logout())
     localStorage.removeItem('token')
+    router.push('/')
   }
 
   useEffect(() => {

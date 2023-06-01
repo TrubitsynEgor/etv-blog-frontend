@@ -5,10 +5,14 @@ import { Button } from './Button'
 interface UserPanelProps {
   isAuth: boolean
   logout: () => void
-  name: string
+  name?: string
 }
 
-export const UserPanel = ({ isAuth, logout, name }: UserPanelProps) => {
+export const UserPanel = ({
+  isAuth,
+  logout,
+  name = 'Profile',
+}: UserPanelProps) => {
   return (
     <div className="flex gap-x-3">
       {isAuth ? (
