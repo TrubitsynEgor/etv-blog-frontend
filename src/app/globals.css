@@ -36,3 +36,10 @@ a {
   height: 1px;
   clip: rect(0 0 0 0);
 }
+
+.slice-paragraph {
+  overflow: hidden;
+  display: -webkit-box;
+  max-width: 100%;
+  -webkit-box-orient: vertical;
+}

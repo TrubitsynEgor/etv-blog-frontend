@@ -1,10 +1,11 @@
 'use client'
-import { authReducer } from '@/features'
+import { authReducer, postsReducer } from '@/features'
 import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
+    posts: postsReducer,
   },
 })
 

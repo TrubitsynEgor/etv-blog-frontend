@@ -1,26 +1,26 @@
 import { DetailsDivProps } from '@/shared/types'
-import styles from './Paragraph.module.scss'
 import cn from 'classnames'
 import { FC } from 'react'
 
 interface ParagraphProps extends DetailsDivProps {
   size?: 'small' | 'medium' | 'large'
-  color?: 'light' | 'dark'
+  numberOfLines?: string
 }
 
 export const Paragraph: FC<ParagraphProps> = ({
-  color = 'light',
-  size = 'large',
+  size = 'small',
   children,
   className,
+  numberOfLines = '',
   ...props
 }) => {
   return (
     <p
-      className={cn(styles.paragraph, className, {
-        [styles.small]: size === 'small',
-        [styles.medium]: size === 'medium',
-        [styles.dark]: color === 'dark',
+      style={{ WebkitLineClamp: numberOfLines }}
+      className={cn('text-base text-slate-100', className, {
+        ['text-lg']: size === 'medium',
+        ['text-xl']: size === 'large',
+        ['slice-paragraph']: numberOfLines,
       })}
       {...props}
     >

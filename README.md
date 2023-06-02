@@ -1,6 +1,6 @@
 ## TODO:
 
-1. Refactor Form component:
+1. Refactor Form component: **_DONE_**
    I need do 2 components (widgets) LoginForm and RegisterForm.
    Transport all logic in model dir these widgets or realize all logic in the features dir,
    need to think it over, how will be better in terms of FSD pattern
