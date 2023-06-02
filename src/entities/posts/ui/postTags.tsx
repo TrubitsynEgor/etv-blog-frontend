@@ -7,12 +7,12 @@ interface PostTagsProps extends DetailsUlProps {
 
 export const PostTags = ({ tags }: PostTagsProps) => {
   return (
-    <ul className="flex gap-x-4">
+    <ul className="flex gap-x-4 flex-wrap">
       {tags.map((tag) => (
         <li key={tag}>
           <Link
             className=" bg-orange-200 px-2 py-1 rounded-lg text-slate-900"
-            href={`/tag/${tag}`}
+            href=""
           >
             #{tag}
           </Link>

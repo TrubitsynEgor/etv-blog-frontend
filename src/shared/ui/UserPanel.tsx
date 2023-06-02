@@ -25,7 +25,7 @@ export const UserPanel = ({
             <RiUser2Fill className="fill-red-500 w-7 h-8" />
           </Link>
 
-          <Button onClick={logout} appearance="icon" className=" p-0">
+          <Button onClick={logout} appearance="icon" style={{ padding: '0' }}>
             <ImExit className="fill-red-500 w-7 h-8" />
           </Button>
         </>
