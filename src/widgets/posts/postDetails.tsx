@@ -1,6 +1,6 @@
 'use client'
 import { PostContent, PostInfo, PostTags, ViewerInfo } from '@/entities'
-import { DetailsUlProps, IPosts, Loader, instanceAxios } from '@/shared'
+import { IPosts, Loader, instanceAxios } from '@/shared'
 import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -8,6 +8,7 @@ export const PostDetails = () => {
   const { id } = useParams()
   const [data, setData] = useState<IPosts>()
   const [postIsLoading, setPostLoading] = useState(true)
+
   const getPostById = async (id: string) => {
     return await instanceAxios.get(`/posts/${id}`)
   }

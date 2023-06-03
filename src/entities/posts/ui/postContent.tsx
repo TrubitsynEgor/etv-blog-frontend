@@ -1,9 +1,11 @@
+import { PostPanel, isAuthSelector } from '@/features'
 import { DetailsDivProps, Paragraph, Title } from '@/shared'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
+import { useSelector } from 'react-redux'
 
 interface PostContentProps extends DetailsDivProps {
   title: string
@@ -22,12 +24,17 @@ export const PostContent = ({
   children,
 }: PostContentProps) => {
   const [imageIsLoading, setImageLoading] = useState(true)
+  const isAuth = useSelector(isAuthSelector)
   const router = useRouter()
   return (
-    <div className="">
+    <div className="relative">
       <Link
         href={`posts/${id}`}
-        className="hover:opacity-70 transition-opacity duration-300"
+        className={
+          !details
+            ? 'hover:opacity-70 transition-opacity duration-300'
+            : 'cursor-text'
+        }
       >
         <Title className="mt-0 " tag={details ? 'h1' : 'h2'}>
           {title}
@@ -43,9 +50,12 @@ export const PostContent = ({
             onClick={() => router.push(`posts/${id}`)}
             width={details ? 1000 : 500}
             height={details ? 350 : 250}
-            className={`cursor-pointer max-w-full  object-cover  
-            shadow-sm shadow-orange-200 rounded-md hover:opacity-70
-            transition-opacity duration-300 
+            className={` max-w-full  object-cover  
+            shadow-sm shadow-orange-200 rounded-md 
+            ${
+              !details &&
+              'cursor-pointer hover:opacity-70 transition-opacity duration-300'
+            }
               ${
                 imageIsLoading
                   ? 'scale-110 blur-2xl grayscale'
@@ -65,14 +75,25 @@ export const PostContent = ({
           }
         >
           {children}
+          {!details && (
+            <>
+              <Paragraph
+                numberOfLines={details ? '' : '6'}
+                className="overflow-hidden mt-4"
+              >
+                <ReactMarkdown>{text}</ReactMarkdown>
+              </Paragraph>
+            </>
+          )}
         </div>
       </div>
-      <Paragraph
-        numberOfLines={details ? '' : '4'}
-        className="overflow-hidden mt-4"
-      >
-        <ReactMarkdown>{text}</ReactMarkdown>
-      </Paragraph>
+      {details && (
+        <Paragraph className="overflow-hidden mt-4">
+          <ReactMarkdown>{text}</ReactMarkdown>
+        </Paragraph>
+      )}
+
+      {isAuth && <PostPanel id={id} />}
     </div>
   )
 }

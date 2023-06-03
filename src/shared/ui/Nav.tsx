@@ -24,7 +24,7 @@ export const Nav: FC<NavProps> = ({ menuItems, pathname }) => {
               <Link
                 href={item.href}
                 className={`font-medium hover:opacity-75 transition-opacity ${
-                  pathname === item.href && 'border-b-2 border-red-500'
+                  pathname === `${item.href}` && 'border-b-2 border-red-500'
                 }`}
               >
                 {item.label}

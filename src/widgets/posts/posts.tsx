@@ -22,9 +22,12 @@ export const Posts = ({}: PostsProps) => {
     return <Loader />
   }
   return (
-    <ul className="text-slate-100 p-5 border-orange-200 border">
+    <ul className="flex flex-col gap-y-5">
       {posts.items.map((el) => (
-        <li key={el._id}>
+        <li
+          key={el._id}
+          className="text-slate-100 p-5 border-orange-200 border"
+        >
           <PostContent
             id={el._id}
             title={el.title}
