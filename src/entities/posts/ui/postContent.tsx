@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 
 interface PostContentProps extends DetailsDivProps {
   title: string
@@ -70,7 +71,7 @@ export const PostContent = ({
         numberOfLines={details ? '' : '4'}
         className="overflow-hidden mt-4"
       >
-        {text}
+        <ReactMarkdown>{text}</ReactMarkdown>
       </Paragraph>
     </div>
   )
