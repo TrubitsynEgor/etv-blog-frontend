@@ -13,6 +13,7 @@ export const Posts = ({}: PostsProps) => {
   const dispatch = useAppDispatch()
   const { posts } = useSelector((state: RootState) => state.posts)
   const postsIsLoading = posts.status === 'loading'
+
   useEffect(() => {
     dispatch(fetchPosts())
   }, [])
@@ -25,6 +26,7 @@ export const Posts = ({}: PostsProps) => {
       {posts.items.map((el) => (
         <li key={el._id}>
           <PostContent
+            id={el._id}
             title={el.title}
             text={el.text}
             imageUrl={

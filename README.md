@@ -14,7 +14,7 @@
    - Create
    - Edit
    - Delete
-   - Get all posts
+   - Get all posts **DONE**
    - Get post by ID
      API ready for this, I need create Features dir(Posts) and realize all logic.
      Create all Entities with PostCard(for list) and PostDetails(for current post)

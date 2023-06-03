@@ -14,7 +14,7 @@ export const PostTags = ({ tags }: PostTagsProps) => {
             className=" bg-orange-200 px-2 py-1 rounded-lg text-slate-900"
             href=""
           >
-            #{tag}
+            {tag}
           </Link>
         </li>
       ))}
