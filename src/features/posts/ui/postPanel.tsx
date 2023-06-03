@@ -17,7 +17,7 @@ export const PostPanel = ({ id }: PostPanelProps) => {
     dispatch(fetchRemovePost(id))
   }
   return (
-    <div className="flex items-center gap-x-3 absolute right-3 top-1">
+    <div className="flex items-center gap-x-3">
       <Link href={`posts/${id}/edit`}>
         <FaEdit
           className={`fill-teal-500 w-8 h-8 hover:fill-teal-200 t

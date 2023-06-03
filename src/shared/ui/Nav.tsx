@@ -1,6 +1,5 @@
 import { DetailsDivProps } from '@/shared/types'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { FC } from 'react'
 
 interface IMenuItems {
@@ -12,9 +11,10 @@ interface IMenuItems {
 interface NavProps extends DetailsDivProps {
   menuItems: IMenuItems[]
   pathname: string
+  id: string
 }
 
-export const Nav: FC<NavProps> = ({ menuItems, pathname }) => {
+export const Nav: FC<NavProps> = ({ menuItems, pathname, id }) => {
   return (
     <nav>
       <ul className="flex items-center gap-x-10">
@@ -24,7 +24,9 @@ export const Nav: FC<NavProps> = ({ menuItems, pathname }) => {
               <Link
                 href={item.href}
                 className={`font-medium hover:opacity-75 transition-opacity ${
-                  pathname === `${item.href}` && 'border-b-2 border-red-500'
+                  (pathname === item.href ||
+                    pathname === `${item.href}/${id}`) &&
+                  'border-b-2 border-red-500'
                 }`}
               >
                 {item.label}

@@ -15,7 +15,7 @@ export const Paragraph: FC<ParagraphProps> = ({
   ...props
 }) => {
   return (
-    <p
+    <div
       style={{ WebkitLineClamp: numberOfLines }}
       className={cn('text-base text-slate-100', className, {
         ['text-lg']: size === 'medium',
@@ -25,6 +25,6 @@ export const Paragraph: FC<ParagraphProps> = ({
       {...props}
     >
       {children}
-    </p>
+    </div>
   )
 }

@@ -27,19 +27,22 @@ export const PostContent = ({
   const isAuth = useSelector(isAuthSelector)
   const router = useRouter()
   return (
-    <div className="relative">
-      <Link
-        href={`posts/${id}`}
-        className={
-          !details
-            ? 'hover:opacity-70 transition-opacity duration-300'
-            : 'cursor-text'
-        }
-      >
-        <Title className="mt-0 " tag={details ? 'h1' : 'h2'}>
-          {title}
-        </Title>
-      </Link>
+    <div className="">
+      <div className="flex justify-between items-center gap-3 mb-10">
+        <Link
+          href={`posts/${id}`}
+          className={
+            !details
+              ? 'hover:opacity-70 transition-opacity duration-300'
+              : 'cursor-text'
+          }
+        >
+          <Title className="mt-0 mb-0" tag={details ? 'h1' : 'h2'}>
+            {title}
+          </Title>
+        </Link>
+        {isAuth && <PostPanel id={id} />}
+      </div>
       <div
         className={
           details ? 'flex items-center flex-col gap-y-8' : 'flex gap-x-3'
@@ -92,8 +95,6 @@ export const PostContent = ({
           <ReactMarkdown>{text}</ReactMarkdown>
         </Paragraph>
       )}
-
-      {isAuth && <PostPanel id={id} />}
     </div>
   )
 }
