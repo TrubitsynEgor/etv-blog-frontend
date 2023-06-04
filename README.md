@@ -13,9 +13,9 @@
 2. Implement work with posts
    - Create
    - Edit
-   - Delete
+   - Delete **DONE**
    - Get all posts **DONE**
-   - Get post by ID
+   - Get post by ID **DONE**
      API ready for this, I need create Features dir(Posts) and realize all logic.
      Create all Entities with PostCard(for list) and PostDetails(for current post)
      All data will be sent via props Posts Widgets

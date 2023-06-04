@@ -1,5 +1,5 @@
 'use client'
-import { Container, CreatePost, Logo, UserPanel } from '@/shared'
+import { Container, CreatePostLink, Logo, UserPanel } from '@/shared'
 import { Nav } from '@/shared/ui/Nav'
 import { menuItems } from './consts'
 import { useParams, usePathname, useRouter } from 'next/navigation'
@@ -34,7 +34,7 @@ export const Header = () => {
         <Logo />
         <Nav menuItems={menuItems} pathname={pathname} id={id} />
         <div className="flex gap-x-10">
-          <CreatePost />
+          <CreatePostLink />
           <UserPanel logout={viewerLogout} isAuth={isAuth} name={name} />
         </div>
       </Container>

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { MdOutlinePostAdd } from 'react-icons/md'
 
-export const CreatePost = () => {
+export const CreatePostLink = () => {
   return (
     <div className="flex ">
       <Link
