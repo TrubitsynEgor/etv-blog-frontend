@@ -10,9 +10,9 @@
    - All logic in the Features dir (Auth)
    - And all this combines LoginForm and RegisterForm widgets (all info will be sent via props)
 
-2. Implement work with posts
-   - Create
-   - Edit
+2. Implement work with posts **_DONE_**
+   - Create **DONE**
+   - Edit **DONE**
    - Delete **DONE**
    - Get all posts **DONE**
    - Get post by ID **DONE**

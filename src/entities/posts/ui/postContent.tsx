@@ -31,7 +31,7 @@ export const PostContent = ({
   const router = useRouter()
   return (
     <div className="">
-      <div className="flex justify-between items-center gap-3 mb-10">
+      <div className="flex justify-between items-center gap-3">
         <Link
           href={`posts/${id}`}
           className={
@@ -46,40 +46,31 @@ export const PostContent = ({
         </Link>
         {isAuth && isCreator && <PostPanel id={id} />}
       </div>
-      <div
-        className={
-          details ? 'flex items-center flex-col gap-y-8' : 'flex gap-x-5'
-        }
-      >
+      <div className={'flex gap-x-5'}>
         {imageUrl && (
           <Image
             onClick={() => router.push(`posts/${id}`)}
-            width={details ? 1000 : 500}
-            height={details ? 350 : 250}
-            className={` max-w-full  object-cover  
-            shadow-sm shadow-orange-200 rounded-md 
-            ${
-              !details &&
-              'cursor-pointer hover:opacity-70 transition-opacity duration-300'
-            }
+            width={500}
+            height={200}
+            priority
+            className={`  
+              shadow-sm shadow-orange-200 rounded-md object-cover w-auto h-auto
               ${
-                imageIsLoading
-                  ? 'scale-110 blur-2xl grayscale'
-                  : 'scale-100 blur-0 grayscale-0'
+                !details &&
+                'cursor-pointer hover:opacity-70 transition-opacity duration-300'
               }
-              `}
+                ${
+                  imageIsLoading
+                    ? 'scale-110 blur-2xl grayscale'
+                    : 'scale-100 blur-0 grayscale-0'
+                }
+                `}
             onLoadingComplete={() => setImageLoading(false)}
             src={imageUrl}
             alt={title}
           />
         )}
-        <div
-          className={
-            details
-              ? 'flex gap-x-3 self-start items-center flex-wrap'
-              : 'flex flex-col gap-y-5'
-          }
-        >
+        <div className={'flex flex-col gap-y-7'}>
           {children}
           {!details && (
             <>
