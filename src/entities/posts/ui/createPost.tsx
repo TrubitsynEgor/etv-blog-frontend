@@ -48,7 +48,7 @@ export const CreatePost = ({}: CreatePostProps) => {
   )
 
   return (
-    <div className="py-10">
+    <div className="pb-10">
       <div className="mb-5">
         {!imageUrl ? (
           <>

@@ -11,6 +11,7 @@
    - And all this combines LoginForm and RegisterForm widgets (all info will be sent via props)
 
 2. Implement work with posts **_DONE_**
+
    - Create **DONE**
    - Edit **DONE**
    - Delete **DONE**
@@ -20,3 +21,5 @@
      Create all Entities with PostCard(for list) and PostDetails(for current post)
      All data will be sent via props Posts Widgets
      Also in the Features I need implement buttons panel with edit and delete btn
+
+3. Add filter [New(createdAt) / Popular(viewsCount) / Tags(filter posts with this tags)]

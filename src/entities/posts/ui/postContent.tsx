@@ -31,7 +31,7 @@ export const PostContent = ({
   const router = useRouter()
   return (
     <div className="">
-      <div className="flex justify-between items-center gap-3">
+      <div className="flex justify-between items-center gap-3 mb-5">
         <Link
           href={`posts/${id}`}
           className={
@@ -40,21 +40,19 @@ export const PostContent = ({
               : 'cursor-text'
           }
         >
-          <Title className="mt-0 mb-0" tag={details ? 'h1' : 'h2'}>
-            {title}
-          </Title>
+          <Title tag={details ? 'h1' : 'h2'}>{title}</Title>
         </Link>
         {isAuth && isCreator && <PostPanel id={id} />}
       </div>
-      <div className={'flex gap-x-5'}>
+      <div className={'flex gap-x-10 items-center '}>
         {imageUrl && (
           <Image
             onClick={() => router.push(`posts/${id}`)}
-            width={500}
+            width={400}
             height={200}
             priority
             className={`  
-              shadow-sm shadow-orange-200 rounded-md object-cover w-auto h-auto
+              shadow-sm shadow-orange-200 rounded-md  w-auto h-auto object-cover
               ${
                 !details &&
                 'cursor-pointer hover:opacity-70 transition-opacity duration-300'
@@ -70,7 +68,7 @@ export const PostContent = ({
             alt={title}
           />
         )}
-        <div className={'flex flex-col gap-y-7'}>
+        <div className={'flex flex-col gap-y-5'}>
           {children}
           {!details && (
             <>

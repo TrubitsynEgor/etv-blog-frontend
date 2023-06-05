@@ -29,7 +29,7 @@ export const Header = () => {
   }, [])
 
   return (
-    <header className="py-3 bg-orange-200">
+    <header className="py-1 bg-orange-200">
       <Container className="flex items-center justify-between gap-x-10">
         <Logo />
         <Nav menuItems={menuItems} pathname={pathname} id={id} />
