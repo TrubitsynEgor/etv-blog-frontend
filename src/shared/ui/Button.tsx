@@ -10,7 +10,7 @@ interface ButtonProps extends DetailsBtnProps {
 
 const primary = 'bg-orange-200 hover:bg-orange-400 text-slate-950'
 const ghost =
-  'text-orange-200 border-orange-200 bg-none hover:bg-orange-300 hover:text-slate-950'
+  'text-orange-200 border-2 border-orange-200 bg-none hover:bg-orange-300 hover:text-slate-950'
 const icon = 'bg-none border-none'
 const down = 'transition-colors duration-300 ease-in-out rotate-90 '
 
@@ -25,9 +25,9 @@ export const Button: FC<ButtonProps> = ({
     <button
       className={cn(
         `font-semibold  flex items-center p-2.5 cursor-pointer justify-center 
-         transition-colors duration-300 ease-in-out border-none rounded-md text-lg
+         transition-colors duration-300 ease-in-out  rounded-md text-lg
           disabled:opacity-40 disabled:cursor-not-allowed focus:outline-2
-           focus:outline-orange-400`,
+           focus:outline-orange-400 `,
         className,
 
         {

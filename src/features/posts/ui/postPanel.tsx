@@ -2,7 +2,7 @@
 import { Button, DetailsDivProps } from '@/shared'
 import { useAppDispatch } from '@/store/hooks'
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import { useParams, useRouter } from 'next/navigation'
 import { fetchRemovePost } from '../reduxSlice'
 import { FaEdit } from 'react-icons/fa'
 import { RiDeleteBinLine } from 'react-icons/ri'
@@ -12,9 +12,10 @@ interface PostPanelProps extends DetailsDivProps {
 }
 export const PostPanel = ({ id }: PostPanelProps) => {
   const dispatch = useAppDispatch()
-
+  const router = useRouter()
   const removePost = () => {
     dispatch(fetchRemovePost(id))
+    router.push('/posts')
   }
   return (
     <div className="flex items-center gap-x-3">
