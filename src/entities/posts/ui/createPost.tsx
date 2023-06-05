@@ -1,20 +1,9 @@
-import { Button, DetailsFormProps, Input, instanceAxios } from '@/shared'
-import {
-  ChangeEvent,
-  FormEvent,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import { Button, DetailsFormProps, Input } from '@/shared'
+import { useCallback, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import 'easymde/dist/easymde.min.css'
-import { useForm, SubmitHandler } from 'react-hook-form'
 import Image from 'next/image'
-import { useParams, useRouter } from 'next/navigation'
-import { useSelector } from 'react-redux'
-import { RootState } from '@/store/store'
+import { useCreateAndEditPost } from '@/features'
 
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
   ssr: false,
@@ -22,74 +11,26 @@ const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
 
 interface CreatePostProps extends DetailsFormProps {}
 
-type postData = {
-  title: string
-  tags: string
-}
-
 export const CreatePost = ({}: CreatePostProps) => {
-  const { id } = useParams()
-  const isEdit = !!id
-  const router = useRouter()
-
-  const [title, setTitle] = useState('')
-  const [tags, setTags] = useState('')
-  const [text, setText] = useState('')
-  const [imageUrl, setImageUrl] = useState('')
-  const inputFileRef = useRef<HTMLInputElement>(null)
-
-  const handleChangeFile = async (e: ChangeEvent<HTMLInputElement>) => {
-    try {
-      if (e.target.files) {
-        const formData = new FormData()
-        const file = e.target.files[0]
-        formData.append('image', file)
-        const { data } = await instanceAxios.post('/upload', formData)
-        setImageUrl(data.url)
-      }
-    } catch (err) {
-      console.warn(err)
-      alert('file download failed')
-    }
-  }
-  const onClickRemoveImage = () => {
-    setImageUrl('')
-  }
-
-  const onSubmit = async (e: FormEvent) => {
-    e.preventDefault()
-    const fields = {
-      title,
-      tags,
-      text,
-      imageUrl,
-    }
-    const { data } = isEdit
-      ? await instanceAxios.patch(`/posts/${id}`, fields)
-      : await instanceAxios.post('/posts', fields)
-
-    const _id = isEdit ? id : data._id
-    router.push(`/posts/${_id}`)
-  }
-
-  useEffect(() => {
-    if (isEdit) {
-      instanceAxios
-        .get(`/posts/${id}`)
-        .then(({ data }) => {
-          setTitle(data.title)
-          setText(data.text)
-          setTags(data.tags.join(','))
-          setImageUrl(data.imageUrl)
-        })
-        .catch((err) => console.warn(err))
-    }
-  }, [])
+  const {
+    handleChangeFile,
+    imageUrl,
+    isEdit,
+    inputFileRef,
+    onClickRemoveImage,
+    onSubmit,
+    router,
+    setTags,
+    setText,
+    setTitle,
+    tags,
+    text,
+    title,
+  } = useCreateAndEditPost()
 
   const onChange = useCallback((value: string) => {
     setText(value)
   }, [])
-
   const options = useMemo(
     () => ({
       spellChecker: false,
