@@ -1,6 +1,7 @@
 import { Button, DetailsFormProps, Input, instanceAxios } from '@/shared'
 import {
   ChangeEvent,
+  FormEvent,
   useCallback,
   useEffect,
   useMemo,
@@ -31,13 +32,10 @@ export const CreatePost = ({}: CreatePostProps) => {
   const isEdit = !!id
   const router = useRouter()
 
-  const { posts } = useSelector((state: RootState) => state.posts)
-
   const [title, setTitle] = useState('')
   const [tags, setTags] = useState('')
   const [text, setText] = useState('')
   const [imageUrl, setImageUrl] = useState('')
-  const { handleSubmit, register } = useForm<postData>()
   const inputFileRef = useRef<HTMLInputElement>(null)
 
   const handleChangeFile = async (e: ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +56,8 @@ export const CreatePost = ({}: CreatePostProps) => {
     setImageUrl('')
   }
 
-  const onSubmit = async () => {
+  const onSubmit = async (e: FormEvent) => {
+    e.preventDefault()
     const fields = {
       title,
       tags,
@@ -142,7 +141,7 @@ export const CreatePost = ({}: CreatePostProps) => {
           alt="Uploaded"
         />
       )}
-      <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-5">
+      <form onSubmit={onSubmit} className="flex flex-col gap-y-5">
         <Input
           className="text-slate-100"
           type="text"

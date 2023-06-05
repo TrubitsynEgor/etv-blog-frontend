@@ -7,6 +7,13 @@ export const store = configureStore({
     auth: authReducer,
     posts: postsReducer,
   },
+
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: ['posts/fetchRemovePost/fulfilled'],
+      },
+    }),
 })
 
 export type RootState = ReturnType<typeof store.getState>

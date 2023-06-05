@@ -48,7 +48,7 @@ export const PostContent = ({
       </div>
       <div
         className={
-          details ? 'flex items-center flex-col gap-y-8' : 'flex gap-x-3'
+          details ? 'flex items-center flex-col gap-y-8' : 'flex gap-x-5'
         }
       >
         {imageUrl && (
