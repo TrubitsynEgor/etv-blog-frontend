@@ -1,7 +1,7 @@
-import { useAppSelector } from '@/store/hooks'
 import { isAuthSelector } from '../reduxSlice'
+import { useSelector } from 'react-redux'
 
 export const useAuth = () => {
-  const isAuth = useAppSelector(isAuthSelector)
+  const isAuth = useSelector(isAuthSelector)
   return isAuth
 }

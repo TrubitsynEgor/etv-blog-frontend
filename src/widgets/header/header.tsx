@@ -4,7 +4,7 @@ import { Nav } from '@/shared/ui/Nav'
 import { menuItems } from './consts'
 import { useParams, usePathname, useRouter } from 'next/navigation'
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
-import { fetchAuthViewerCheck, isAuthSelector, logout } from '@/features'
+import { fetchAuthViewerCheck, logout, useAuth } from '@/features'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { RootState } from '@/store/store'
@@ -13,7 +13,7 @@ export const Header = () => {
   const pathname = usePathname()
   const { id } = useParams()
   const router = useRouter()
-  const isAuth = useSelector(isAuthSelector)
+  const isAuth = useAuth()
   const data = useSelector((state: RootState) => state.auth.data)
   const name = data?.fullName.split(' ')[0]
   const dispatch = useAppDispatch()
@@ -25,7 +25,7 @@ export const Header = () => {
   }
 
   useEffect(() => {
-    dispatch(fetchAuthViewerCheck())
+    if (localStorage.getItem('token')) dispatch(fetchAuthViewerCheck())
   }, [])
 
   return (

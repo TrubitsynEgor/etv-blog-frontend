@@ -2,9 +2,9 @@ import { DetailsDivProps } from '@/shared/types'
 import styles from './Popup.module.scss'
 import cn from 'classnames'
 import { Dispatch, FC, SetStateAction } from 'react'
-import { Portal } from '@/components'
+import { Portal } from '../Portal'
 import { AiOutlineClose } from 'react-icons/ai'
-import { useAuth } from '@/components/AuthPanel/userStore'
+import { useAuth } from '@/features'
 
 interface PopupProps extends DetailsDivProps {
   setVisible: Dispatch<SetStateAction<boolean>>
@@ -18,7 +18,7 @@ export const Popup: FC<PopupProps> = ({
   className,
   ...props
 }) => {
-  const isAuth = useAuth((state) => state.isAuth)
+  const isAuth = useAuth()
 
   return (
     <Portal>

@@ -1,11 +1,10 @@
-import { PostPanel, isAuthSelector } from '@/features'
+import { PostPanel } from '@/features'
 import { DetailsDivProps, Paragraph, Title } from '@/shared'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
-import { useSelector } from 'react-redux'
 
 interface PostContentProps extends DetailsDivProps {
   title: string
@@ -13,6 +12,8 @@ interface PostContentProps extends DetailsDivProps {
   imageUrl?: string
   id: string
   details?: boolean
+  isAuth?: boolean
+  isCreator?: boolean
 }
 
 export const PostContent = ({
@@ -21,10 +22,12 @@ export const PostContent = ({
   text,
   imageUrl,
   details = false,
+  isAuth,
+  isCreator,
   children,
 }: PostContentProps) => {
   const [imageIsLoading, setImageLoading] = useState(true)
-  const isAuth = useSelector(isAuthSelector)
+
   const router = useRouter()
   return (
     <div className="">
@@ -41,7 +44,7 @@ export const PostContent = ({
             {title}
           </Title>
         </Link>
-        {isAuth && <PostPanel id={id} />}
+        {isAuth && isCreator && <PostPanel id={id} />}
       </div>
       <div
         className={

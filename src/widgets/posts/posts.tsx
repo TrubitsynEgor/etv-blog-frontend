@@ -1,6 +1,6 @@
 'use client'
 import { PostContent, PostInfo, PostTags, ViewerInfo } from '@/entities'
-import { fetchPosts } from '@/features'
+import { fetchPosts, useAuth } from '@/features'
 import { DetailsUlProps, Loader } from '@/shared'
 import { useAppDispatch } from '@/store/hooks'
 import { RootState } from '@/store/store'
@@ -12,7 +12,9 @@ interface PostsProps extends DetailsUlProps {}
 export const Posts = ({}: PostsProps) => {
   const dispatch = useAppDispatch()
   const { posts } = useSelector((state: RootState) => state.posts)
+  const userData = useSelector((state: RootState) => state.auth.data)
   const postsIsLoading = posts.status === 'loading'
+  const isAuth = useAuth()
 
   useEffect(() => {
     dispatch(fetchPosts())
@@ -32,6 +34,8 @@ export const Posts = ({}: PostsProps) => {
             id={el._id}
             title={el.title}
             text={el.text}
+            isAuth={isAuth}
+            isCreator={userData?._id === el.user._id}
             imageUrl={
               el.imageUrl
                 ? `${process.env.NEXT_PUBLIC_BASE_SERVER_URL}${el.imageUrl}`

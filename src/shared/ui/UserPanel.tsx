@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { RiUser2Fill } from 'react-icons/ri'
 import { ImExit } from 'react-icons/im'
 import { Button } from './Button'
+
 interface UserPanelProps {
   isAuth: boolean
   logout: () => void
