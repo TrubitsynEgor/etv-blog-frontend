@@ -2,10 +2,12 @@ import { FormEvent, useEffect, useRef, useState } from 'react'
 import { instanceAxios } from '@/shared'
 import { ChangeEvent } from 'react'
 import { useParams, useRouter } from 'next/navigation'
+import { SelectOption } from '@/shared/ui/Select/Select.types'
+import { selectOptions } from '../consts'
 
 export const useCreateAndEditPost = () => {
   const [title, setTitle] = useState('')
-  const [tags, setTags] = useState('')
+  const [tags, setTags] = useState<SelectOption[]>([selectOptions[0]])
   const [text, setText] = useState('')
   const [imageUrl, setImageUrl] = useState('')
   const inputFileRef = useRef<HTMLInputElement>(null)
@@ -36,7 +38,7 @@ export const useCreateAndEditPost = () => {
     e.preventDefault()
     const fields = {
       title,
-      tags,
+      tags: tags.map((el) => el.label).join(','),
       text,
       imageUrl,
     }

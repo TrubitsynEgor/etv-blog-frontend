@@ -1,9 +1,10 @@
-import { Button, DetailsFormProps, Input } from '@/shared'
+import { Button, DetailsFormProps, Input, Select } from '@/shared'
 import { useCallback, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import 'easymde/dist/easymde.min.css'
 import Image from 'next/image'
 import { useCreateAndEditPost } from '@/features'
+import { selectOptions } from '@/features/posts/consts'
 
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
   ssr: false,
@@ -90,12 +91,19 @@ export const CreatePost = ({}: CreatePostProps) => {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <Input
+        {/* <Input
           className="text-slate-100"
           type="text"
           placeholder="Enter the tags separated by commas < , > "
           value={tags}
           onChange={(e) => setTags(e.target.value)}
+        /> */}
+
+        <Select
+          multiple
+          options={selectOptions}
+          value={tags}
+          onChange={(o) => setTags(o)}
         />
 
         <SimpleMDE

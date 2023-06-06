@@ -17,6 +17,8 @@ export const Posts = ({}: PostsProps) => {
   const isAuth = useAuth()
   const { handleIsNew, handleIsPopular, isNew, isPopular } = usePostFilter()
 
+  console.log(posts.items)
+
   useEffect(() => {
     dispatch(fetchPosts())
   }, [])

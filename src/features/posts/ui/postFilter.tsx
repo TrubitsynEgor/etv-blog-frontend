@@ -19,6 +19,7 @@ export const PostFilter = ({
   handleIsPopular,
 }: PostFilterProps) => {
   const [value, setValue] = useState<SelectOption[]>([selectOptions[0]])
+  console.log(value.map((el) => el.label))
 
   return (
     <div className="flex items-center gap-x-4 ">

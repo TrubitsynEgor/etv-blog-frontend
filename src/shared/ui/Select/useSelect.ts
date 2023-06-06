@@ -1,6 +1,8 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import { SelectOption, SelectProps } from './Select.types'
+import { useAppDispatch } from '@/store/hooks'
+import { fetchPosts, getPostsByTags } from '@/features'
 
 export const useSelect = ({
   onChange,
@@ -11,6 +13,7 @@ export const useSelect = ({
   const [isOpen, setIsOpen] = useState(false)
   const [highlightedIndex, setHighlightedIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
+  const dispatch = useAppDispatch()
 
   function clearOptions() {
     multiple ? onChange([]) : onChange(undefined)
@@ -42,11 +45,13 @@ export const useSelect = ({
       switch (e.code) {
         case 'Enter':
         case 'Space':
+          e.preventDefault()
           setIsOpen((prev) => !prev)
           if (isOpen) selectOption(options[highlightedIndex])
           break
         case 'ArrowUp':
         case 'ArrowDown': {
+          e.preventDefault()
           if (!isOpen) {
             setIsOpen(true)
             break
@@ -70,6 +75,10 @@ export const useSelect = ({
     }
   }, [isOpen, highlightedIndex, options])
 
+  useEffect(() => {
+    if (Array.isArray(value)) {
+    }
+  }, [value, dispatch])
   return {
     isOpen,
     setIsOpen,

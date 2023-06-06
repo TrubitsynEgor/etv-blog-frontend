@@ -56,7 +56,6 @@ export function Select({ multiple, value, onChange, options }: SelectProps) {
             onClick={(e) => {
               e.stopPropagation()
               selectOption(option)
-              setIsOpen(false)
             }}
             onMouseEnter={() => setHighlightedIndex(index)}
             key={option.value}
