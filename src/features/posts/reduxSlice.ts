@@ -39,7 +39,16 @@ const initialState: PostsState = {
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
-  reducers: {},
+  reducers: {
+    getNewPosts: (state) => {
+      state.posts.items.sort(
+        (a, b) => Date.parse(b.createdAt) - Date.parse(a.createdAt)
+      )
+    },
+    getPopularPosts: (state) => {
+      state.posts.items.sort((a, b) => b.viewsCount - a.viewsCount)
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPosts.pending, (state) => {
@@ -74,4 +83,5 @@ const postsSlice = createSlice({
   },
 })
 
+export const { getNewPosts, getPopularPosts } = postsSlice.actions
 export const postsReducer = postsSlice.reducer
