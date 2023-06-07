@@ -8,6 +8,7 @@ module.exports = {
   compiler: {
     styledComponents: true,
   },
+  reactStrictMode: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [

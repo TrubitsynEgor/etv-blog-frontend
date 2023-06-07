@@ -10,7 +10,7 @@ export function Select({ multiple, value, onChange, options }: SelectProps) {
     highlightedIndex,
     setHighlightedIndex,
     containerRef,
-    clearOptions,
+    // clearOptions,
     selectOption,
     isOptionSelected,
   } = useSelect({ multiple, value, onChange, options } as SelectProps)
@@ -39,7 +39,7 @@ export function Select({ multiple, value, onChange, options }: SelectProps) {
             ))
           : value?.label}
       </span>
-      <button
+      {/* <button
         onClick={(e) => {
           e.stopPropagation()
           clearOptions()
@@ -47,7 +47,7 @@ export function Select({ multiple, value, onChange, options }: SelectProps) {
         className={styles['clear-btn']}
       >
         &times;
-      </button>
+      </button> */}
       <div className={styles.divider}></div>
       <div className={styles.caret}></div>
       <ul className={`${styles.options} ${isOpen ? styles.show : ''}`}>

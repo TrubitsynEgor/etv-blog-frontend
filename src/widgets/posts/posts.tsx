@@ -1,10 +1,23 @@
 'use client'
 import { PostContent, PostInfo, PostTags, ViewerInfo } from '@/entities'
-import { PostFilter, fetchPosts, useAuth, usePostFilter } from '@/features'
-import { DetailsUlProps, Loader, Title } from '@/shared'
+import {
+  PostFilter,
+  fetchPosts,
+  getPostsById,
+  useAuth,
+  usePostFilter,
+} from '@/features'
+import {
+  DetailsUlProps,
+  IPosts,
+  Loader,
+  Title,
+  containsInArray,
+} from '@/shared'
+import { useSelect, useSelectedValue } from '@/shared/ui/Select/useSelect'
 import { useAppDispatch } from '@/store/hooks'
 import { RootState } from '@/store/store'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 interface PostsProps extends DetailsUlProps {}
@@ -16,8 +29,17 @@ export const Posts = ({}: PostsProps) => {
   const postsIsLoading = posts.status === 'loading'
   const isAuth = useAuth()
   const { handleIsNew, handleIsPopular, isNew, isPopular } = usePostFilter()
+  const { value, setValue } = useSelectedValue()
+  const [filteredPosts, setFilteredPosts] = useState<IPosts[]>([])
 
-  console.log(posts.items)
+  useEffect(() => {
+    const tags = value.map((el) => el.label)
+    const filtered = posts.items.filter((el) => {
+      const res = containsInArray(el.tags, tags)
+      if (res) return el
+    })
+    setFilteredPosts(filtered)
+  }, [value, posts.items])
 
   useEffect(() => {
     dispatch(fetchPosts())
@@ -31,6 +53,8 @@ export const Posts = ({}: PostsProps) => {
       <div className="flex items-center gap-x-5">
         <Title className="mt-5 mb-5">Posts:</Title>
         <PostFilter
+          value={value}
+          setValue={setValue}
           isNew={isNew}
           isPopular={isPopular}
           handleIsNew={handleIsNew}
@@ -38,7 +62,7 @@ export const Posts = ({}: PostsProps) => {
         />
       </div>
       <ul className="flex flex-col gap-y-5">
-        {posts.items.map((el) => (
+        {(value.length ? filteredPosts : posts.items).map((el) => (
           <li
             key={el._id}
             className="text-slate-100 p-5 border-orange-200 border"

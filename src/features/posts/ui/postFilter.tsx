@@ -1,15 +1,17 @@
 'use client'
 
-import { Button, DetailsDivProps, Select } from '@/shared'
+import { Button, DetailsDivProps, Select, useSelectedValue } from '@/shared'
 import { selectOptions } from '../consts'
 import { SelectOption } from '@/shared/ui/Select/Select.types'
-import { useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 
 interface PostFilterProps extends DetailsDivProps {
   isNew: boolean
   isPopular: boolean
   handleIsNew: () => void
   handleIsPopular: () => void
+  value: SelectOption[]
+  setValue: Dispatch<SetStateAction<SelectOption[]>>
 }
 
 export const PostFilter = ({
@@ -17,10 +19,9 @@ export const PostFilter = ({
   isPopular,
   handleIsNew,
   handleIsPopular,
+  value,
+  setValue,
 }: PostFilterProps) => {
-  const [value, setValue] = useState<SelectOption[]>([selectOptions[0]])
-  console.log(value.map((el) => el.label))
-
   return (
     <div className="flex items-center gap-x-4 ">
       <Button

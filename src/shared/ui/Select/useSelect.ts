@@ -1,8 +1,12 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
 import { SelectOption, SelectProps } from './Select.types'
-import { useAppDispatch } from '@/store/hooks'
-import { fetchPosts, getPostsByTags } from '@/features'
+import { selectOptions } from '@/features/posts/consts'
+
+export const useSelectedValue = () => {
+  const [value, setValue] = useState<SelectOption[]>([selectOptions[0]])
+  return { value, setValue }
+}
 
 export const useSelect = ({
   onChange,
@@ -13,11 +17,10 @@ export const useSelect = ({
   const [isOpen, setIsOpen] = useState(false)
   const [highlightedIndex, setHighlightedIndex] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
-  const dispatch = useAppDispatch()
 
-  function clearOptions() {
-    multiple ? onChange([]) : onChange(undefined)
-  }
+  // function clearOptions() {
+  //   multiple ? onChange([]) : onChange(undefined)
+  // }
 
   function selectOption(option: SelectOption) {
     if (multiple) {
@@ -75,17 +78,13 @@ export const useSelect = ({
     }
   }, [isOpen, highlightedIndex, options])
 
-  useEffect(() => {
-    if (Array.isArray(value)) {
-    }
-  }, [value, dispatch])
   return {
     isOpen,
     setIsOpen,
     highlightedIndex,
     setHighlightedIndex,
     containerRef,
-    clearOptions,
+    // clearOptions,
     selectOption,
     isOptionSelected,
   }
