@@ -57,7 +57,15 @@ export const useCreateAndEditPost = () => {
         .then(({ data }) => {
           setTitle(data.title)
           setText(data.text)
-          setTags(data.tags.join(','))
+          setTags(
+            data.tags.map((el: string, idx: number) => {
+              return {
+                label: el,
+                value: idx + 1,
+              }
+            })
+          )
+
           setImageUrl(data.imageUrl)
         })
         .catch((err) => console.warn(err))

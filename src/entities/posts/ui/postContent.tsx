@@ -71,14 +71,12 @@ export const PostContent = ({
         <div className={'flex flex-col gap-y-5'}>
           {children}
           {!details && (
-            <>
-              <Paragraph
-                numberOfLines={details ? '' : '6'}
-                className="overflow-hidden mt-4"
-              >
-                <ReactMarkdown>{text}</ReactMarkdown>
-              </Paragraph>
-            </>
+            <Paragraph
+              numberOfLines={details ? '' : '6'}
+              className="overflow-hidden mt-4"
+            >
+              <ReactMarkdown>{text}</ReactMarkdown>
+            </Paragraph>
           )}
         </div>
       </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, DetailsDivProps, Select, useSelectedValue } from '@/shared'
+import { Button, DetailsDivProps, Select } from '@/shared'
 import { selectOptions } from '../consts'
 import { SelectOption } from '@/shared/ui/Select/Select.types'
 import { Dispatch, SetStateAction } from 'react'

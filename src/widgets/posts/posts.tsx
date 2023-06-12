@@ -1,12 +1,6 @@
 'use client'
 import { PostContent, PostInfo, PostTags, ViewerInfo } from '@/entities'
-import {
-  PostFilter,
-  fetchPosts,
-  getPostsById,
-  useAuth,
-  usePostFilter,
-} from '@/features'
+import { PostFilter, fetchPosts, useAuth, usePostFilter } from '@/features'
 import {
   DetailsUlProps,
   IPosts,
@@ -14,7 +8,7 @@ import {
   Title,
   containsInArray,
 } from '@/shared'
-import { useSelect, useSelectedValue } from '@/shared/ui/Select/useSelect'
+import { useSelectedValue } from '@/shared/ui/Select/useSelect'
 import { useAppDispatch } from '@/store/hooks'
 import { RootState } from '@/store/store'
 import { useEffect, useState } from 'react'

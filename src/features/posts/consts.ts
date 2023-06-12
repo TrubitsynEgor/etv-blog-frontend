@@ -8,5 +8,5 @@ export const selectOptions = [
   { label: 'Zustand ', value: 7 },
   { label: 'TanStack Query', value: 8 },
   { label: 'React-hook-form', value: 9 },
-  { label: 'framer-motion', value: 10 },
+  { label: 'Framer-motion', value: 10 },
 ]

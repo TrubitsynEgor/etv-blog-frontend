@@ -1,7 +1,7 @@
 import { Button, DetailsFormProps, Input, Select } from '@/shared'
 import { useCallback, useMemo } from 'react'
 import dynamic from 'next/dynamic'
-import 'easymde/dist/easymde.min.css'
+
 import Image from 'next/image'
 import { useCreateAndEditPost } from '@/features'
 import { selectOptions } from '@/features/posts/consts'
@@ -9,6 +9,7 @@ import { selectOptions } from '@/features/posts/consts'
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {
   ssr: false,
 })
+import 'easymde/dist/easymde.min.css'
 
 interface CreatePostProps extends DetailsFormProps {}
 
