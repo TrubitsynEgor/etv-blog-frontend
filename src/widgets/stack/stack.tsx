@@ -1,4 +1,4 @@
-import { Container, Paragraph, Title } from '@/shared'
+import { Container, DecorBg, Paragraph, Title } from '@/shared'
 import Image from 'next/image'
 import Photo from '/public/img_02.png'
 import Link from 'next/link'
@@ -30,7 +30,7 @@ import TypeScript from '/public/icons/typescript.svg'
 
 export const Stack = () => {
   return (
-    <section className="stack py-16">
+    <section className="stack py-24 relative z-50">
       <Container className="flex justify-center gap-16 text-slate-100">
         <div className="flex flex-col gap-5">
           <Title tag="h2" className="text-center ">

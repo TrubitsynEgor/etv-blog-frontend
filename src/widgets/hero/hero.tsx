@@ -1,12 +1,15 @@
-import { Container, Paragraph, Title } from '@/shared'
+import { Container, Paragraph, SnowBg, Title } from '@/shared'
 import Image from 'next/image'
 import Photo from '/public/img_01.png'
 import Link from 'next/link'
+import { DecorBg } from '@/shared'
 
 export const Hero = () => {
   return (
-    <section className="hero py-16">
-      <Container className="flex items-center justify-center gap-16  text-slate-100">
+    <section className="hero py-24 relative">
+      <SnowBg />
+      <DecorBg />
+      <Container className="flex items-center justify-center gap-16  text-slate-100 relative z-50">
         <div className="max-w-2xl">
           <Title>Hi 👋, I&apos;m Egor!</Title>
           <Title tag="h3">
