@@ -5,8 +5,8 @@ import Link from 'next/link'
 
 export const Hero = () => {
   return (
-    <section className="hero">
-      <Container className="flex items-center justify-center gap-16 mt-8 text-slate-100">
+    <section className="hero py-16">
+      <Container className="flex items-center justify-center gap-16  text-slate-100">
         <div className="max-w-2xl">
           <Title>Hi 👋, I&apos;m Egor!</Title>
           <Title tag="h3">
