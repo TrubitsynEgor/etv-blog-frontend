@@ -1,11 +1,9 @@
 import { DetailsDivProps } from '@/shared'
-import Image from 'next/image'
 
 interface ViewerInfoProps extends DetailsDivProps {
   avatarUrl: string
   fullName: string
   createdAt: string
-  details: boolean
 }
 
 export const ViewerInfo = ({

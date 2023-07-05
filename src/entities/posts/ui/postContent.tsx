@@ -1,5 +1,5 @@
 import { PostPanel } from '@/features'
-import { DetailsDivProps, Paragraph, Title } from '@/shared'
+import { DetailsDivProps, Title } from '@/shared'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'

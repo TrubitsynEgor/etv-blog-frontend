@@ -2,7 +2,6 @@ import { DetailsInputProps } from '@/shared/types'
 import styles from './Input.module.scss'
 import cn from 'classnames'
 import { forwardRef } from 'react'
-import { FieldError } from 'react-hook-form'
 
 interface InputProps extends DetailsInputProps {
   error?: boolean

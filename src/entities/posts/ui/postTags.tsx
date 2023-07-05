@@ -1,5 +1,4 @@
 import { DetailsUlProps } from '@/shared'
-import Link from 'next/link'
 
 interface PostTagsProps extends DetailsUlProps {
   tags: string[]

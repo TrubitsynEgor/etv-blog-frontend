@@ -2,7 +2,7 @@
 import { Button, DetailsDivProps } from '@/shared'
 import { useAppDispatch } from '@/store/hooks'
 import Link from 'next/link'
-import { useParams, useRouter } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { fetchRemovePost } from '../reduxSlice'
 import { FaEdit } from 'react-icons/fa'
 import { RiDeleteBinLine } from 'react-icons/ri'

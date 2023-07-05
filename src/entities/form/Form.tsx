@@ -4,11 +4,7 @@ import { useState } from 'react'
 import { FaEye } from 'react-icons/fa'
 import { FaEyeSlash } from 'react-icons/fa'
 
-import {
-  FieldErrors,
-  UseFormHandleSubmit,
-  UseFormRegister,
-} from 'react-hook-form'
+import { UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
 import { FormData, RegisterFormData } from '@/features'
 
 type FormDataAlias = FormData | RegisterFormData

@@ -80,7 +80,7 @@ export const Posts = ({}: PostsProps) => {
               }
             >
               <ViewerInfo
-                details={false}
+              
                 fullName={el.user.fullName}
                 avatarUrl={el.user.avatarUrl}
                 createdAt={el.user.createdAt}
