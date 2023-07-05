@@ -2,21 +2,21 @@
 ## **Preview** - https://etv-blog-frontend.vercel.app
 
 ### Technology stack:
-- Back-end:
-  1. **Node-js**
-  2. **Express**
-  3.** Mongo-DB**
-  4. DB object modeling - **Mongoose**
-  5. **Multer** - files upload  middleware
-  6. Authentication model - **JWT**
-  7. Password hashing - **bcrypt**
+1. Back-end:
+  - **Node-js**
+  - **Express**
+  -** Mongo-DB**
+  - DB object modeling - **Mongoose**
+  - **Multer** - files upload  middleware
+  - Authentication model - **JWT**
+  - Password hashing - **bcrypt**
 
-- Front-end:
-  1. **React**
-  2. framework - **Next-js**
-  3. **React-hook-form**
-  4. **Tailwind CSS**
-  5. HTTP requests - **Axios**
-  6. State-manager - **Redux-toolkit**
-  7. **TypeScript**
+2. Front-end:
+  - **React**
+  -  framework - **Next-js**
+  - **React-hook-form**
+  - **Tailwind CSS**
+  - HTTP requests - **Axios**
+  - State-manager - **Redux-toolkit**
+  - **TypeScript**
   
