@@ -10,7 +10,7 @@
   - **Multer** - files upload  middleware
   - Authentication model - **JWT**
   - Password hashing - **bcrypt**
-
+---
 2. Front-end:
   - **React**
   -  framework - **Next-js**
