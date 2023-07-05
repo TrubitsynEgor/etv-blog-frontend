@@ -40,12 +40,21 @@ export const Posts = ({}: PostsProps) => {
   }, [])
 
   if (postsIsLoading) {
-    return <Loader />
+    return (
+      <>
+        <Title className="text-center py-5">Please wait 10-15 sec.</Title>
+        <Title tag="h2" className="text-center py-5">
+          My back-end hosting is free so the first download may take longer than
+          usual
+        </Title>
+        <Loader />
+      </>
+    )
   }
   return (
     <>
       <div className="flex items-center gap-x-5">
-        <Title className="mt-5 mb-5">Posts:</Title>
+        <Title className="mt-5 mb-5">Projects:</Title>
         <PostFilter
           value={value}
           setValue={setValue}
@@ -55,12 +64,9 @@ export const Posts = ({}: PostsProps) => {
           handleIsPopular={handleIsPopular}
         />
       </div>
-      <ul className="flex flex-col gap-y-5">
+      <ul className="flex gap-x-11  gap-y-64 flex-wrap justify-center py-36">
         {(value.length ? filteredPosts : posts.items).map((el) => (
-          <li
-            key={el._id}
-            className="text-slate-100 p-5 border-orange-200 border"
-          >
+          <li key={el._id} className="text-slate-100 relative w-5/12 ">
             <PostContent
               id={el._id}
               title={el.title}
@@ -74,18 +80,18 @@ export const Posts = ({}: PostsProps) => {
               }
             >
               <ViewerInfo
+                details={false}
                 fullName={el.user.fullName}
                 avatarUrl={el.user.avatarUrl}
                 createdAt={el.user.createdAt}
-              />
-
+              >
+                <PostInfo
+                  commentsCount={5}
+                  createdAt={el.createdAt}
+                  viewsCount={el.viewsCount}
+                />
+              </ViewerInfo>
               <PostTags tags={el.tags} />
-
-              <PostInfo
-                commentsCount={5}
-                createdAt={el.createdAt}
-                viewsCount={el.viewsCount}
-              />
             </PostContent>
           </li>
         ))}

@@ -9,4 +9,8 @@ export const selectOptions = [
   { label: 'TanStack Query', value: 8 },
   { label: 'React-hook-form', value: 9 },
   { label: 'Framer-motion', value: 10 },
+  { label: 'TypeScript', value: 11 },
+  { label: 'Firebase', value: 12 },
+  { label: 'Gulp', value: 13 },
+  { label: 'Angular', value: 14 },
 ]

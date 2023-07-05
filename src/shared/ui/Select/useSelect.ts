@@ -4,7 +4,7 @@ import { SelectOption, SelectProps } from './Select.types'
 import { selectOptions } from '@/features/posts/consts'
 
 export const useSelectedValue = () => {
-  const [value, setValue] = useState<SelectOption[]>([selectOptions[0]])
+  const [value, setValue] = useState<SelectOption[]>([])
   return { value, setValue }
 }
 

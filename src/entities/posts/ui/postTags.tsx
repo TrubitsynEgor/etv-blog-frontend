@@ -7,7 +7,7 @@ interface PostTagsProps extends DetailsUlProps {
 
 export const PostTags = ({ tags }: PostTagsProps) => {
   return (
-    <ul className="flex gap-4 flex-wrap ">
+    <ul className="flex gap-2 flex-wrap ">
       {tags
         .filter((el) => el.trim().length > 0)
         .map((tag, idx) => (

@@ -1,4 +1,4 @@
-import { Button, DetailsFormProps, Input, Select } from '@/shared'
+import { Button, DetailsFormProps, Input, Select, Textarea } from '@/shared'
 import { useCallback, useMemo } from 'react'
 import dynamic from 'next/dynamic'
 
@@ -113,7 +113,13 @@ export const CreatePost = ({}: CreatePostProps) => {
           onChange={onChange}
           options={options}
         />
-
+        {/* <Textarea
+          className="text-slate-100"
+          type="text"
+          placeholder="Enter post title..."
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        /> */}
         <div className="flex gap-x-3">
           <Button appearance="primary">{isEdit ? 'Edit' : 'Create'}</Button>
           <Button

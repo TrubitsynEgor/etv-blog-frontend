@@ -37,3 +37,8 @@ export type DetailsLinkProps = DetailedHTMLProps<
   HTMLAttributes<HTMLLinkElement>,
   HTMLLinkElement
 >
+
+export type DetailsTextareaProps = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLTextAreaElement>,
+  HTMLTextAreaElement
+>

@@ -16,7 +16,7 @@ export const PostInfo = ({
   const data = new Date(createdAt)
 
   return (
-    <ul className="flex gap-x-4 items-center">
+    <ul className="flex  gap-x-4 items-center">
       <li className="flex gap-x-2 items-center">
         <FiEye />
         <span>{viewsCount}</span>

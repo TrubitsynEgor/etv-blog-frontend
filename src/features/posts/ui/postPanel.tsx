@@ -18,7 +18,7 @@ export const PostPanel = ({ id }: PostPanelProps) => {
     router.push('/posts')
   }
   return (
-    <div className="flex items-center gap-x-3">
+    <div className="flex items-center gap-x-3 absolute right-3 top-5 z-40">
       <Link href={`posts/${id}/edit`}>
         <FaEdit
           className={`fill-teal-500 w-8 h-8 hover:fill-teal-200 t

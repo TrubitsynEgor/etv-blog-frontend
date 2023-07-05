@@ -5,18 +5,21 @@ interface ViewerInfoProps extends DetailsDivProps {
   avatarUrl: string
   fullName: string
   createdAt: string
+  details: boolean
 }
 
 export const ViewerInfo = ({
   avatarUrl,
   fullName,
   createdAt,
+  children,
+  className,
 }: ViewerInfoProps) => {
   const createYear = new Date(createdAt).getFullYear()
   return (
-    <div className="flex gap-x-3">
+    <div className={`flex gap-3 ${className}`}>
       <img
-        className="w-12 h-12 object-cover"
+        className="w-12 h-12 object-cover rounded-full"
         src={avatarUrl || '/noavatar.png'}
         alt={fullName}
       />
@@ -24,6 +27,7 @@ export const ViewerInfo = ({
         <span className="">{fullName}</span>
         <span className="">{`On site since ${createYear}`}</span>
       </div>
+      {children}
     </div>
   )
 }
